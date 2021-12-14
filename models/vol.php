@@ -42,7 +42,7 @@ public function modificar(){
     $a->query($sql);
     $a->close();
 }
-
+ 
 public function buscar(){
     $conexion = new database();
     $sql = "SELECT * FROM vol WHERE codi = '$this->codi'";

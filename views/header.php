@@ -23,7 +23,11 @@
   <div class="container-fluid">
     <ul class="navbar-nav">
       <li class="nav-item">
+<<<<<<< HEAD
         <a class="nav-link" href="usuari/registrar">Link</a>
+=======
+        <a class="nav-link" href="#">Link</a>
+>>>>>>> eb215295afa619a0d87ca295b8431aba53128400
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
