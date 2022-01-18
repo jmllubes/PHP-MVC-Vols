@@ -10,15 +10,7 @@ class reserva
     private $data_tornada;
     private $nombre_places;
 
-    public function __construct($codi,    $codi_vol, $codi_usuari,    $data_anada,    $data_tornada,    $nombre_places)
-    {
-        $this->codi = $codi;
-        $this->codi_vol = $codi_vol;
-        $this->codi_usuari = $codi_usuari;
-        $this->data_anada = $data_anada;
-        $this->data_tornada = $data_tornada;
-        $this->nombre_places = $nombre_places;
-    }
+
 
 
     /**

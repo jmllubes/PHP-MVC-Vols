@@ -7,14 +7,6 @@ class ticket{
     private $total;
     private $data_ticket;
 
-    public function __construct($codi,$codi_reserva,$total,$data_ticket)
-    {
-        $this->codi = $codi;
-        $this->codi_reserva = $codi_reserva;
-        $this->total = $total;
-        $this->data_ticket = $data_ticket;
-    }
-
     /**
      * Get the value of codi
      */ 

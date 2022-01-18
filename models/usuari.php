@@ -1,4 +1,6 @@
 <?php
+require_once("config/database.php");
+
 class usuari{
     
 public	$codi;
@@ -10,19 +12,49 @@ public	$dni;
 public	$telefon;	
 public	$num_tarjeta;
 public	$rol;
-public function __construct($codi,	$nom,	$contrasenya,	$correu,	$adreça,	$dni,	$telefon,	$num_tarjeta,	$rol)
-{
-    $this->codi = $codi;
-    $this->nom = $nom;
-    $this->contrasenya = $contrasenya;
-    $this->correu = $correu;
-    $this->adreça = $adreça;
-    $this->dni = $dni;
-    $this->telefon = $telefon;
-    $this->num_tarjeta = $num_tarjeta;
-    $this->rol = $rol;
-    
 
+public function insertar(){
+        
+        $conexion = new database();
+        $sql = "INSERT INTO usuari (nom,contrasenya,correu,adreça,dni,telefon,num_tarjeta) VALUES ('$this->nom','$this->contrasenya','$this->correu','$this->adreça','$this->dni','$this->telefon','$this->num_tarjeta')";
+        $a = $conexion->connect();
+        $a->query($sql);
+        $a->close();
+
+}
+
+public function mostrar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM usuari";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
+public function buscar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM usuari WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
+public function eliminar(){
+    $conexion = new database();
+    $sql = "DELETE FROM usuari WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+
+public function modificar(){
+    $conexion = new database();
+    $sql = "UPDATE usuari SET nom = '$this->nom', contrasenya = '$this->contrasenya', correu = '$this->correu', adreça = '$this->adreça', dni = '$this->dni', telefon = '$this->telefon', num_tarjeta = '$this->num_tarjeta', rol = '$this->rol' WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
 }
 
 

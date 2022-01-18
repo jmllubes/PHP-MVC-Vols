@@ -28,7 +28,19 @@
         <a class="nav-link" href="index.php?controller=vol&action=insertarvols">Insertar vols</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="index.php?controller=usuari&action=mostrarusuaris">Mostrar usuaris</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=usuari&action=insertarusuaris">Registrar usuari</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=reserva&action=mostrarreserves">Mostrar reserves</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=reserva&action=insertarreserves">Insertar reserves</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?controller=ticket&action=mostrartickets">Mostrar tickets</a>
       </li>
 
     </ul>
