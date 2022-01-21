@@ -58,7 +58,7 @@ class usuariController{
         }
 
         public function actualitzarusuaris(){
-            if(isset($_POST)){
+            
                 $usuari = new usuari();
                 $usuari->setCodi($_POST['codi']);
                 $usuari->setNom($_POST['nom']);
@@ -70,6 +70,6 @@ class usuariController{
                 $usuari->setNum_tarjeta($_POST['num_tarjeta']);
                 $usuari->modificar();
                 header('Location: index.php?controller=usuari&action=mostrarusuaris');
-            }
+            
         }
 }

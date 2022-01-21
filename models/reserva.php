@@ -1,4 +1,5 @@
 <?php
+require_once("config/database.php");
 
 class reserva
 {
@@ -10,6 +11,47 @@ class reserva
     private $data_tornada;
     private $nombre_places;
 
+public function insertar(){
+            
+            $conexion = new database();
+            $sql = "INSERT INTO reserva (codi_vol,codi_usuari,data_anada,data_tornada,nombre_places) VALUES ('$this->codi_vol','$this->codi_usuari','$this->data_anada','$this->data_tornada','$this->nombre_places')";
+            $a = $conexion->connect();
+            $a->query($sql);
+            $a->close();
+    
+}
+public function mostrar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM reserva";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
+public function buscar(){
+    $conexion = new database();
+    $sql = "SELECT * FROM reserva WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+public function eliminar(){
+    $conexion = new database();
+    $sql = "DELETE FROM reserva WHERE codi = '$this->codi'";
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
+public function modificar(){
+    $conexion = new database();
+    $sql = "UPDATE reserva SET data_anada = '$this->data_anada', data_tornada = '$this->data_tornada', nombre_places = '$this->nombre_places' WHERE codi = '$this->codi'";
+    echo $sql;
+    $a = $conexion->connect();
+    $a->query($sql);
+    $a->close();
+}
 
 
 

@@ -1,5 +1,7 @@
 <form action="index.php?controller=usuari&action=actualitzarusuaris" method="post">
-
+<div class="form-group">
+        <input type="hidden" class="form-control" id="codi" name="codi" value="<?php echo $row['codi'];?>">
+    </div>
     <div class="form-group">
         <label for="dni">DNI</label>
         <input type="text" class="form-control" id="dni" name="dni" value="<?php echo $row['dni'];?>">
@@ -26,7 +28,7 @@
     </div>
     <div class="form-group">
         <label for="contrasenya">Contrasenya</label>
-        <input type="text" class="form-control" id="contrasenya" name="contrasenya" placeholder="Contrasenya">
+        <input type="text" class="form-control" id="contrasenya" name="contrasenya" placeholder="Contrasenya" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 

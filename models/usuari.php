@@ -52,6 +52,7 @@ public function eliminar(){
 public function modificar(){
     $conexion = new database();
     $sql = "UPDATE usuari SET nom = '$this->nom', contrasenya = '$this->contrasenya', correu = '$this->correu', adreça = '$this->adreça', dni = '$this->dni', telefon = '$this->telefon', num_tarjeta = '$this->num_tarjeta', rol = '$this->rol' WHERE codi = '$this->codi'";
+    echo $sql;
     $a = $conexion->connect();
     $a->query($sql);
     $a->close();
