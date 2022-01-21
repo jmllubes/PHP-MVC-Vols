@@ -11,14 +11,21 @@ class ticket{
 public function insertar(){
             
             $conexion = new database();
-            $sql = "INSERT INTO ticket (codi_reserva,total,data_ticket) VALUES ('$this->codi_reserva','$this->total','$this->data_ticket')";
             $a = $conexion->connect();
+            $sqltotal = "SELECT (r.nombre_places * v.preu) as total FROM reserva as r INNER JOIN vol as v
+            ON r.codi_vol = v.codi WHERE r.codi = '$this->codi_reserva'";
+            $resultat = $a->query($sqltotal);
+            $row = $resultat->fetch_assoc();
+            $total = $row['total'];
+            $sql = "INSERT INTO ticket (codi_reserva,total) VALUES ('$this->codi_reserva','$total')";
             $a->query($sql);
             $a->close();
 }
 public function mostrar(){
     $conexion = new database();
-    $sql = "SELECT * FROM ticket";
+    $sql = "SELECT origen,desti,data_anada,data_tornada,reserva.nombre_places as n_places,
+    preu,total,data_ticket FROM ticket INNER JOIN reserva ON ticket.codi_reserva = reserva.codi
+    INNER JOIN vol ON reserva.codi_vol = vol.codi";
     $a = $conexion->connect();
     $resultado = $a->query($sql);
     $a->close();
