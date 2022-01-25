@@ -27,3 +27,4 @@ Futures actualitzacions:
 4. Implementar passarel·la de pagament.
 5. Implementar recuperació de contrasenya per correu electrònic.
 
+Plantilla login: https://colorlib.com/wp/template/colorlib-regform-7/
