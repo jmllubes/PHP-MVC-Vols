@@ -27,7 +27,7 @@ class usuariController{
             $usuari->setContrasenya(md5($_POST['contrasenya']));
             $usuari->setAdreça($_POST['adreça']);
             $usuari->setTelefon($_POST['telefon']);
-            $usuari->setNum_tarjeta($_POST['num_tarjeta']);
+            //$usuari->setNum_tarjeta($_POST['num_tarjeta']);
             $usuari->insertar();
             header("Location: index.php?controller=usuari&action=mostrarusuaris");
         }
@@ -55,6 +55,22 @@ class usuariController{
         
         public function insertarusuaris(){
             require_once 'views/usuaris/insertarusuaris.php';
+        }
+
+        public function login(){
+            $usuari = new usuari();
+            $usuari->setCorreu($_POST['correu']);
+            $usuari->setContrasenya(md5($_POST['contrasenya']));
+            $r = $usuari->login();
+            $row = $r->fetch_assoc();
+            if($row['contrasenya'] == $usuari->getContrasenya()){
+                $_SESSION['codi'] = $row['codi'];
+                $_SESSION['usuari'] = $row['correu'];
+                $_SESSION['rol'] = $row['rol'];
+                header('Location: index.php?controller=usuari&action=mostrarusuaris');
+            }else{
+                header('Location: views/usuaris/login.php');
+            }
         }
 
         public function actualitzarusuaris(){
