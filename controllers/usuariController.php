@@ -1,16 +1,19 @@
 <?php 
 require_once 'models/usuari.php';
-
+@session_start();
 class usuariController{
         
         public function mostrarusuaris(){
-            $usuari = new usuari();
-            $usuaris = $usuari->mostrar();
-            require_once 'views/usuaris/mostrarusuaris.php';
+            if($_SESSION['rol']=='admin'){
+                $usuari = new usuari();
+                $usuaris = $usuari->mostrar();
+                require_once 'views/usuaris/mostrarusuaris.php';
+            }
+            
         }
         
         public function mostrarusuariid(){
-            if(isset($_GET['codi'])){
+            if($_SESSION['rol']=='admin' and isset($_GET['codi'])){
                 $id = $_GET['codi'];
                 $usuari = new usuari();
                 $usuari->setCodi($id);
@@ -20,6 +23,7 @@ class usuariController{
         }
 
         public function guardarusuari(){
+            
             $usuari = new usuari();
             $usuari->setNom($_POST['nom']);
             $usuari->setDni($_POST['dni']);
@@ -29,11 +33,11 @@ class usuariController{
             $usuari->setTelefon($_POST['telefon']);
             //$usuari->setNum_tarjeta($_POST['num_tarjeta']);
             $usuari->insertar();
-            header("Location: index.php?controller=usuari&action=mostrarusuaris");
+            header("Location: views/usuaris/login.php");
         }
         
         public function eliminarusuaris(){
-            if(isset($_GET['codi'])){
+            if($_SESSION['rol']=='admin' and isset($_GET['codi'])){
                 $id = $_GET['codi'];
                 $usuari = new usuari();
                 $usuari->setCodi($id);
@@ -54,8 +58,16 @@ class usuariController{
         }
         
         public function insertarusuaris(){
+            if($_SESSION['rol']=='admin'){
             require_once 'views/usuaris/insertarusuaris.php';
+            }
         }
+
+        public function logout(){
+            session_destroy();
+            header('Location: index.php');
+        }
+
 
         public function login(){
             $usuari = new usuari();
@@ -63,11 +75,13 @@ class usuariController{
             $usuari->setContrasenya(md5($_POST['contrasenya']));
             $r = $usuari->login();
             $row = $r->fetch_assoc();
+            echo $row['contrasenya'];
+            echo $row['correu'];
             if($row['contrasenya'] == $usuari->getContrasenya()){
                 $_SESSION['codi'] = $row['codi'];
                 $_SESSION['usuari'] = $row['correu'];
                 $_SESSION['rol'] = $row['rol'];
-                header('Location: index.php?controller=usuari&action=mostrarusuaris');
+                header('Location: index.php?controller=vol&action=mostrarvols');
             }else{
                 header('Location: views/usuaris/login.php');
             }

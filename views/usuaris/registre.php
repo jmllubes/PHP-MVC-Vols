@@ -28,34 +28,34 @@ $_SESSION['usuari']="prova";
                         <form method="POST" action="../../index.php?controller=usuari&action=guardarusuari" class="register-form" id="register-form">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="nom" id="name" placeholder="Your Name"/>
+                                <input type="text" name="nom" id="name" placeholder="Your Name" required/>
                             </div>
                             <div class="form-group">
                                 <label for="adreça"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="adreça" id="name" placeholder="Your Address"/>
+                                <input type="text" name="adreça" id="name" placeholder="Your Address" required/>
                             </div>
                             <div class="form-group">
                                 <label for="dni"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="dni" id="name" placeholder="Your DNI"/>
+                                <input type="text" name="dni" id="name" placeholder="Your DNI" required/>
                             </div>
                             <div class="form-group">
                                 <label for="telefon"><i class="zmdi zmdi-account zmdi-account-box-phone"></i></label>
-                                <input type="text" name="telefon" id="name" placeholder="Your Phone"/>
+                                <input type="text" name="telefon" id="name" placeholder="Your Phone" required/>
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>
-                                <input type="email" name="correu" id="email" placeholder="Your Email"/>
+                                <input type="email" name="correu" id="email" placeholder="Your Email" required/>
                             </div>
                             <div class="form-group">
                                 <label for="pass"><i class="zmdi zmdi-lock"></i></label>
-                                <input type="password" name="contrasenya" id="pass" placeholder="Password"/>
+                                <input type="password" name="contrasenya" id="pass" placeholder="Password" required/>
                             </div>
                             <div class="form-group">
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                                <input type="password" name="re_contrasenya" id="re_pass" placeholder="Repeat your password"/>
+                                <input type="password" name="re_contrasenya" id="re_pass" placeholder="Repeat your password"required/>
                             </div>
                             <div class="form-group">
-                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
+                                <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" required />
                                 <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all statements in  <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
