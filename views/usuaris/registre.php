@@ -13,10 +13,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<?php 
-session_start();
-$_SESSION['usuari']="prova";
-?>
+
     <div class="main">
 
         <!-- Sign up form -->

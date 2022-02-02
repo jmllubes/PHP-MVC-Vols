@@ -1,4 +1,4 @@
-<table style="border: 1;">
+<table class="table">
  <tr>
     <th>Origen</th>
     <th>Destí</th>

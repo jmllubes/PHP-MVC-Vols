@@ -23,7 +23,12 @@ class volController{
         $vol->origen = $_POST['origen'];
         $vol->desti = $_POST['desti'];
         $vol->preu = $_POST['preu'];
-        $vol->foto = $_POST['foto'];
+        $today = date("YmdHis");
+        $extensio = substr($_FILES['foto']['name'], strpos($_FILES['foto']['name'],"."));
+        $nom = substr($_FILES['foto']['name'],0, strpos($_FILES['foto']['name'],"."));
+        $nomcomplet =  $nom . $today . $extensio;
+        copy($_FILES['foto']['tmp_name'], "views/vol/img/" . $nomcomplet);
+        $vol->foto = $nomcomplet;
         $vol->nombre_places = $_POST['nombre_places'];
         $vol->insertar();
         header("Location: index.php?controller=vol&action=mostrarvols");

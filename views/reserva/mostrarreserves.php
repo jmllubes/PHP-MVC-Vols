@@ -1,4 +1,4 @@
-<table style="border: 1;">
+<table class="table">
 <tr>
 <th>Codi vol</th>
 <th>Data Anada</th>

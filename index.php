@@ -8,7 +8,7 @@ include "views/header.php";
 
 <div class="container mt-5">
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col">
 <?php
 require_once 'autoload.php';
 if(isset($_GET['controller'])){ //Comprovem que rebem valor de la variable controller
