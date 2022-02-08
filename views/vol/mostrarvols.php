@@ -1,4 +1,4 @@
-<table class="table">
+<!-- <table class="table">
     <tr>
     <th>codi</th>
     <th>origen</th>
@@ -10,9 +10,9 @@
     <th>eliminar</th>
     <th>reservar</th>
     
-    </tr>
-<?php
-while($row = $vols->fetch_assoc()){
+    </tr> -->
+
+<!-- while($row = $vols->fetch_assoc()){
     echo "<tr>";
     echo "<td>".$row['codi']."</td>";
     echo "<td>".$row['origen']."</td>";
@@ -26,20 +26,25 @@ while($row = $vols->fetch_assoc()){
     echo "</tr>";
 }
 echo "</table>";
+ -->
 
+ <div class="row">
+<?php while($row = $vols->fetch_assoc()){?>
 
-?>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="views/vol/img/baixa20220201111955.jpg" alt="Card image cap">
+<div class="card col-md-6 col-lg-4 col-xl-3">
+  <img class="card-img-top" src="views/vol/img/<?php echo $row['foto'];?>" alt="Card image cap">
   <div class="card-body">
-	<h5 class="card-title">Barcelona - Madrid</h5>
-	<p class="card-text">Preu: 100€</p>
-	<a href="index.php?controller=reserva&action=modificarvols&codi=1" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
-  
-	<a href="index.php?controller=reserva&action=eliminarvols&codi=1" class="btn btn-primary"><i class="bi bi-trash"></i></a>
-	<a href="index.php?controller=reserva&action=insertarreserves&codi=1" class="btn btn-primary"><i class="bi bi-calendar2-plus"></i></a>
+	<h5 class="card-title"><?php echo $row['origen'] . " -> " . $row['desti'];?></h5>
+	<p class="card-text">Preu: <?php echo $row['preu'];?> €</p>
+	<p class="card-text">Places: <?php echo $row['nombre_places'];?></p>
+  <?php if($_SESSION['rol'] == 'admin'){?>
+   
+	<a href="index.php?controller=vol&action=modificarvols&codi=<?php echo $row['codi'];?>" class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
+	<a href="index.php?controller=vol&action=eliminarvols&codi=<?php echo $row['codi'];?>" class="btn btn-primary"><i class="bi bi-trash"></i></a>
+  <?php }?>
+  <a href="index.php?controller=reserva&action=insertarreserves&codi=<?php echo $row['codi'];?>" class="btn btn-primary"><i class="bi bi-calendar2-plus"></i></a>
   </div>
 </div>
 
-  </div>
+<?php } ?>
 </div>

@@ -1,4 +1,4 @@
-<form action="index.php?controller=vol&action=actualitzarvols" method="post">
+<form action="index.php?controller=vol&action=actualitzarvols" method="post" enctype="multipart/form-data">
 <div class="form-group">
         <input class="form-control" id="codi" name="codi" type="hidden" value=<?php echo $row['codi'];?>>
     </div>
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label for="foto">Foto</label>
-        <input type="text" class="form-control" id="foto" name="foto" value=<?php echo $row['foto'];?>>
+        <input type="file" class="form-control" id="foto" name="foto" value=<?php echo $row['foto'];?>>
     </div>
     <div class="form-group">
         <label for="nombre_places">Nombre places</label>

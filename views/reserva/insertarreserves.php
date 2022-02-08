@@ -1,5 +1,5 @@
 <form action="index.php?controller=reserva&action=guardarreserves" method="post">
-
+<?php @session_start(); ?>
 <div class="form-group">
         <input type="hidden" class="form-control" id="codi_vol" name="codi_vol" value="<?php echo $_REQUEST["codi"];?>">
     </div>
@@ -19,8 +19,7 @@
     </div>
     
     <div class="form-group">
-        <label for="codi_usuari">Codi usuari</label>
-        <input type="text" class="form-control" id="codi_usuari" name="codi_usuari" placeholder="codi_usuari">
+        <input type="hidden" class="form-control" id="codi_usuari" name="codi_usuari" value="<?php echo $_SESSION['codi'];?>">
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
