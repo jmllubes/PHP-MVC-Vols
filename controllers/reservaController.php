@@ -45,8 +45,34 @@ class reservaController{
         $reserva->setCodiVol($_POST['codi_vol']);
         $reserva->setData_tornada($_POST['data_tornada']);
         $reserva->setDataAnada($_POST['data_anada']);
-        $reserva->setNombrePlaces($_POST['nombre_places']);
-        $reserva->insertar();
-        header("Location: index.php?controller=reserva&action=mostrarreserves");
+        $reserva->setNombrePlaces($_POST['nombre_places']);//50
+        $placesvol = $reserva->placesvol(); //100
+        if($reserva->getData_tornada() !=null){
+            $a = $reserva->disp_anada(); //50 or NULL 
+            $b = $reserva->disp_tornada(); //30 OR NULL
+            $rowa = $a->fetch_assoc();
+            $rowb = $b->fetch_assoc();
+            $rowp = $placesvol->fetch_assoc();
+            //echo "a) ".$placesvol." ".$a->fetch_assoc()['pa_reserv'].$reserva->getDataAnada();
+            //echo "b) ".$placesvol." ".$b->fetch_assoc()['pt_reserv'].$reserva->getData_tornada();
+            $totala = $rowp['nombre_places'] - ($rowa['pa_reserv'] + $reserva->getNombrePlaces());
+            $totalt = $rowp['nombre_places'] - ($rowb['pt_reserv'] + $reserva->getNombrePlaces());
+            if($totala >=0 and $totalt>=0){
+            $reserva->insertar();
+            header("Location: index.php?controller=reserva&action=mostrarreserves");
+        }
+        else{
+            
+            header("Location: index.php?controller=reserva&action=insertarreserves&codi=".$reserva->getCodiVol()."&error=1");
+            
+        }
+    }
+    else{
+        $a = $reserva->disp_anada();
+        echo "a) ".$a->fetch_assoc()['p_disponiblesa'].$reserva->getDataAnada();
+
+    }
+        
+        
     }
 }

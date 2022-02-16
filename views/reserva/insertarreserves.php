@@ -1,6 +1,12 @@
 <form action="index.php?controller=reserva&action=guardarreserves" method="post">
 <?php @session_start(); ?>
 <div class="form-group">
+    <?php if($_GET['error']==1){ ?>
+        
+        <script>
+                alert("No hi ha places disponibles");
+            </script>
+            <?php } ?>
         <input type="hidden" class="form-control" id="codi_vol" name="codi_vol" value="<?php echo $_REQUEST["codi"];?>">
     </div>
 

@@ -11,6 +11,8 @@ class usuariController{
             }
             
         }
+
+
         
         public function mostrarusuariid(){
             if($_SESSION['rol']=='admin' and isset($_GET['codi'])){

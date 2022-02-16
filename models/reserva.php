@@ -20,9 +20,41 @@ public function insertar(){
             $a->close();
     
 }
+
+public function placesvol(){
+    $conexion = new database();
+    $sql = "SELECT nombre_places FROM vol WHERE codi = '$this->codi_vol'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
+public function disp_anada(){
+    $conexion = new database();
+    $sql = "SELECT SUM(reserva.nombre_places) AS pa_reserv 
+    FROM vol INNER JOIN reserva on vol.codi = reserva.codi_vol 
+    WHERE data_anada = '$this->data_anada'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
+public function disp_tornada(){
+    $conexion = new database();
+    $sql = "SELECT SUM(reserva.nombre_places) AS pt_reserv FROM vol INNER JOIN reserva on vol.codi = reserva.codi_vol WHERE data_tornada = '$this->data_tornada' and vol.nombre_places < '$this->nombre_places'";
+    $a = $conexion->connect();
+    $resultado = $a->query($sql);
+    $a->close();
+    return $resultado;
+}
+
 public function mostrar(){
     $conexion = new database();
-    $sql = "SELECT * FROM reserva INNER JOIN vol ON reserva.codi_vol = vol.codi ";
+    $sql = "SELECT reserva.codi,codi_usuari,codi_vol,origen,desti,data_anada,
+    data_tornada,reserva.nombre_places as n_places 
+    FROM reserva INNER JOIN vol ON reserva.codi_vol = vol.codi ";
     $a = $conexion->connect();
     $resultado = $a->query($sql);
     $a->close();
